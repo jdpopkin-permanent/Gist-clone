@@ -1,6 +1,4 @@
 GistClone.Views.GistDetail = Backbone.View.extend({
-
-
   render: function() {
     var that = this;
 
@@ -11,4 +9,6 @@ GistClone.Views.GistDetail = Backbone.View.extend({
     that.$el.html(renderedContent);
     return that;
   }
+
+
 });

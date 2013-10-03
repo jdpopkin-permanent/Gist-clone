@@ -1,2 +1,6 @@
+<% if (gist.get("favorite")) { %>
+  &lt;3
+<% } %>
+
 <%= gist.get("title") %>
-<button>Favorite</button>
+<button class="fav" data-id="<%= gist.get("id") %>">Favorite</button>
