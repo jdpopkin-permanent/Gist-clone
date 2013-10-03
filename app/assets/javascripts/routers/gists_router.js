@@ -4,8 +4,8 @@ GistClone.Routers.GistsRouter = Backbone.Router.extend({
   },
 
   routes: {
-    "": "index"
-    //"gists/new": "new"
+    "": "index",
+    "gists/:id": "show"
   },
 
   index: function() {
@@ -16,7 +16,12 @@ GistClone.Routers.GistsRouter = Backbone.Router.extend({
     that.$rootEl.html(gistsIndex.render().$el);
   },
 
-  // new: function() {
-//     console.log("HEY")
-//   }
+  show: function(id) {
+    var that = this;
+
+    var gist = GistClone.Gists.get(id);
+    var showView = new GistClone.Views.GistShow({model: gist});
+
+    that.$rootEl.html(showView.render().$el);
+  }
 });

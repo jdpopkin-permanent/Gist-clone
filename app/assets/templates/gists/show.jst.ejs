@@ -1,0 +1,15 @@
+<span class="title"><h1><%= gist.get("title") %></h1>
+<button class="edit-title">Change title</button></span>
+
+<ul>
+  <% _(gist.get("gist_files")).each(function(gistFile) { %>
+    <li>
+      <%= gistFile.get("name") %>
+      <br>
+      <%= gistFile.get("body") %>
+      <button class="edit-gist-file" data-id="<%= gistFile.get("id") %>">
+        edit
+      </button>
+    </li>
+  <% }) %>
+</ul>

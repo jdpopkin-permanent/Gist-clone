@@ -1,0 +1,14 @@
+<form class="gist-file-form" data-id="<%= file.get("id") %>">
+
+  <label>File name
+    <input type="text" name="gist_file[name]" value="<%= file.get("name") %>">
+  </label>
+
+  <br>
+
+  <label>Body
+    <textarea name="gist_file[body]"><%= file.get("body") %></textarea>
+  </label>
+
+  <input type="submit" value="Save Gistfile">
+</form>

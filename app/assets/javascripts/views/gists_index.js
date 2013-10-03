@@ -13,7 +13,8 @@ GistClone.Views.GistsIndex = Backbone.View.extend({
   events: {
     "click .fav": "toggleFavorite",
     "click #new-gist": "renderForm",
-    "submit .gist-form": "resetFormView"
+    "submit .gist-form": "resetFormView",
+    "click a.gist-title": "show"
   },
 
   render: function () {
@@ -56,6 +57,14 @@ GistClone.Views.GistsIndex = Backbone.View.extend({
 
   resetFormView: function(event) {
     this.formView = new GistClone.Views.GistForm();
+  },
+
+  show: function(event) {
+    event.preventDefault();
+
+    var id = $(event.target).attr("data-id")
+
+    Backbone.history.navigate("#/gists/" + id, {trigger:true})
   }
 
 });

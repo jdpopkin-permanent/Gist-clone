@@ -21,4 +21,19 @@ class GistsController < ApplicationController
       render json: @gist.errors, status: 422
     end
   end
+
+  def update
+    @gist = Gist.find(params[:id])
+
+    params[:gist_files].each do |gist_file_data|
+      gist_file = GistFile.find(gist_file_data[:id])
+      gist_file.update_attributes(name: gist_file_data[:name], body: gist_file_data[:body])
+    end
+
+    if @gist.update_attributes(params[:gist])
+      render json: @gist.to_json(include: [:favorites, :gist_files])
+    else
+      render json: @gist.errors, status: 422
+    end
+  end
 end
