@@ -12,6 +12,12 @@ GistClone.Models.Gist = Backbone.Model.extend({
       }
     });
 
+    var newGistFiles = _(response.gist_files).map(function(gist_file) {
+      return new GistClone.Models.GistFile(gist_file);
+    });
+
+    response.gist_files = newGistFiles;
+
     delete response.favorites;
 
     return response;

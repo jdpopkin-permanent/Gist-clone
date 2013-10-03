@@ -7,5 +7,7 @@ class Gist < ActiveRecord::Base
   has_many :favorites
   has_many :favoriters, through: :favorites, source: :user
 
+  has_many :gist_files, inverse_of: :gist
+
 
 end
