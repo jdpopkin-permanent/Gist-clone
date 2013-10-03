@@ -1,7 +1,7 @@
 <div id="content"></div>
 
 <script id="gists-json" type="application/json">
-  <%= Gist.all.to_json.html_safe %>
+  <%= current_user.gists.includes(:favorites).to_json(include: :favorites).html_safe %>
 </script>
 
 <script>

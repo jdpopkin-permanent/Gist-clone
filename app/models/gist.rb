@@ -4,4 +4,8 @@ class Gist < ActiveRecord::Base
   validates :title, :user_id, presence: true
 
   belongs_to :user, class_name: "User", primary_key: :id, foreign_key: :user_id
+  has_many :favorites
+  has_many :favoriters, through: :favorites, source: :user
+
+
 end
