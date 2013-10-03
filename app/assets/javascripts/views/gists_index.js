@@ -4,11 +4,15 @@ GistClone.Views.GistsIndex = Backbone.View.extend({
 
     var renderCallback = that.render.bind(that);
 
-    this.listenTo(GistClone.Gists, "change:favorite", renderCallback);
+    this.formView = new GistClone.Views.GistForm();
+
+    this.listenTo(GistClone.Gists, "change", renderCallback);
+    this.listenTo(GistClone.Gists, "add", renderCallback);
   },
 
   events: {
-    "click .fav": "toggleFavorite"
+    "click .fav": "toggleFavorite",
+    "click #new-gist": "renderForm"
   },
 
   render: function () {
@@ -39,6 +43,14 @@ GistClone.Views.GistsIndex = Backbone.View.extend({
       newFav.save();
       gist.set("favorite", newFav);
     }
+  },
 
+  renderForm: function(event) {
+    var that = this;
+
+    event.preventDefault();
+
+    this.$el.append(that.formView.render().$el);
   }
+
 });

@@ -12,6 +12,11 @@ window.GistClone = {
     //this.Gists = new GistClone.Collections.Gists(rawGists);
 
     this.Gists = new GistClone.Collections.Gists();
+    this.Gists.comparator = function(gist) {
+      var createdDate = new Date(gist.get("created_at"));
+
+      return -1 * createdDate.getTime();
+    }
 
     this.currentId = parseInt(current_user_id);
 
