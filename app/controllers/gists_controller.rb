@@ -9,12 +9,10 @@ class GistsController < ApplicationController
     @gist.user_id = current_user.id
 
 
-    if params[:gist_file]
-
-      puts params[:gist_file]
-      #params[:gist_file].each do |gist_file_data|
-      @gist.gist_files.build(params[:gist_file])
-      #end
+    if params[:gist_files]
+      params[:gist_files].each do |gist_file_data|
+        @gist.gist_files.build(gist_file_data)
+      end
     end
 
     if @gist.save!

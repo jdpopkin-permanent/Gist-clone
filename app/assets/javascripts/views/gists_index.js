@@ -12,7 +12,8 @@ GistClone.Views.GistsIndex = Backbone.View.extend({
 
   events: {
     "click .fav": "toggleFavorite",
-    "click #new-gist": "renderForm"
+    "click #new-gist": "renderForm",
+    "submit .gist-form": "resetFormView"
   },
 
   render: function () {
@@ -51,6 +52,10 @@ GistClone.Views.GistsIndex = Backbone.View.extend({
     event.preventDefault();
 
     this.$el.append(that.formView.render().$el);
+  },
+
+  resetFormView: function(event) {
+    this.formView = new GistClone.Views.GistForm();
   }
 
 });
