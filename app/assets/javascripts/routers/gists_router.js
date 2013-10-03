@@ -1,7 +1,6 @@
 GistClone.Routers.GistsRouter = Backbone.Router.extend({
-  initialize: function($rootEl, gists) {
+  initialize: function($rootEl) {
     this.$rootEl = $rootEl;
-    this.gists = gists;
   },
 
   routes: {
@@ -12,6 +11,7 @@ GistClone.Routers.GistsRouter = Backbone.Router.extend({
     var that = this;
 
     var gistsIndex = new GistClone.Views.GistsIndex();
-  }
 
+    that.$rootEl.html(gistsIndex.render().$el);
+  }
 });

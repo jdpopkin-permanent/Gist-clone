@@ -8,6 +8,9 @@ window.GistClone = {
 
     // initialize this.Gists
     this.Gists = new GistClone.Collections.Gists(rawGists);
+
+    new GistClone.Routers.GistsRouter($('#content'));
+    Backbone.history.start();
   }
 };
 

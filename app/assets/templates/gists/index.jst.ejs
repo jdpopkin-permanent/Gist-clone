@@ -1,0 +1,8 @@
+<ul>
+  <% gists.each(function(gist) { %>
+    <li>
+      <% var detail = new GistClone.Views.GistDetail( {model: gist} ) %>
+      <%= detail.render().$el.html() %>
+    </li>
+  <% }); %>
+</ul>
