@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
+gem 'backbone-on-rails'
+gem 'ejs'
 
 group :assets do
   gem 'coffee-rails', '~> 3.2.1'
